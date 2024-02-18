@@ -16,7 +16,7 @@ const WeatherBoard = () => {
           <div className="grid md:grid-cols-2 gap-10 md:gap-6">
             <AddToFavoutite />
             <WeatherHeadline />
-            <WeatherCondition />
+            <WeatherCondition/>
           </div>
         </div>
       </div>
