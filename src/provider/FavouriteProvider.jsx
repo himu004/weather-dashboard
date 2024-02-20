@@ -6,11 +6,14 @@ const FavouriteProvider = ({ children }) => {
   const [favourites, setfavourites] = useLocalStorage("favourites", []);
 
   const addToFavourites = (latitude, longitude, location) => {
-    setfavourites(...favourites, {
+    setfavourites([
+      ...favourites, 
+      {
       latitude: latitude,
       longitude: longitude,
       location: location,
-    });
+    }
+  ]);
   };
 
   const removeFromFavourites = (location) => {
