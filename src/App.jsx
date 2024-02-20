@@ -1,23 +1,29 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import WeatherBoard from "./components/Weather/WeatherBoard";
-import { FavouriteProvider, WeatherProvider } from "./provider";
+import {
+  FavouriteProvider,
+  LocationProvider,
+  WeatherProvider,
+} from "./provider";
 
 function App() {
   return (
-    <WeatherProvider>
-    <FavouriteProvider>
-    <div className="grid place-content-center h-screen">
-      <Header />
+    <LocationProvider>
+      <WeatherProvider>
+        <FavouriteProvider>
+          <div className="grid place-content-center h-screen">
+            <Header />
 
-      <main>
-        <section>
-          <WeatherBoard />
-        </section>
-      </main>
-    </div>
-    </FavouriteProvider>
-    </WeatherProvider>
+            <main>
+              <section>
+                <WeatherBoard />
+              </section>
+            </main>
+          </div>
+        </FavouriteProvider>
+      </WeatherProvider>
+    </LocationProvider>
   );
 }
 
