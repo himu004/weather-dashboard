@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import WeatherBoard from "./components/Weather/WeatherBoard";
 import { WeatherContext } from "./contex";
@@ -17,13 +17,45 @@ import WinterImage from './assets/backgrounds/winter.jpg';
 
 const Page = () => {
 
-    const {WeatherData, loading} = useContext(WeatherContext)
+    const {weatherData, loading} = useContext(WeatherContext);
+
+    const [climateImage, setClimateImage] = useState("");
+
+    const getBackgroundImage = (climate) => {
+
+         // TODO: Change Bg Depending on climate
+        switch(climate) {
+            case "Rain": return RainyDayImage;
+            case "Clouds": return ScatterdCloudImage;
+            case "Clear": return ClearSkyImage;
+            case "Snow": return SnowImage;
+            case "Fog": return WinterImage;
+            case "Haze": return FewCloudsImage;
+            case "Mist": return MistImage;
+            case "Sunny": return SunnyImage;
+            case "Thunder": return ThunderStormImage;
+        }
+    }
+
+
+    useEffect(() =>{
+       
+        const bgImage = getBackgroundImage(weatherData.climate);
+        setClimateImage(bgImage)
+        
+    }, [weatherData.climate])
 
   return (
     <>
     {
-        loading.state ? (<p>{loading.message}</p>) : 
-        (<div className="grid place-content-center h-screen">
+        loading.state ? (<div className="flex bg-gray-200 rounded-md w-96 mt-14 mx-auto" >
+        <p className="text-center text-3xl text-black p-8 disabled">
+        {loading.message}
+        </p>
+        </div>) : 
+        (<div 
+        style={{backgroundImage: `url('${climateImage}')`}}
+        className="grid place-content-center h-screen bg-no-repeat bg-cover">
       <Header />
       <main>
         <section>
