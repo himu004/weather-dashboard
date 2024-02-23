@@ -1,4 +1,5 @@
 import "./App.css";
+import Page from "./Page";
 import Header from "./components/Header/Header";
 import WeatherBoard from "./components/Weather/WeatherBoard";
 import {
@@ -12,15 +13,7 @@ function App() {
     <LocationProvider>
       <WeatherProvider>
         <FavouriteProvider>
-          <div className="grid place-content-center h-screen">
-            <Header />
-
-            <main>
-              <section>
-                <WeatherBoard />
-              </section>
-            </main>
-          </div>
+          <Page />
         </FavouriteProvider>
       </WeatherProvider>
     </LocationProvider>
