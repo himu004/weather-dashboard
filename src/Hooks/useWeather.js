@@ -83,7 +83,10 @@ const useWeather = () => {
       fetchWeatherData(selectedLocation.latitude, selectedLocation.longitude);
     } else {
       navigator.geolocation.getCurrentPosition(function (position) {
-        fetchWeatherData(position.coords.latitude, position.coords.longitude);
+        fetchWeatherData(
+          position.coords.latitude, 
+          position.coords.longitude
+          );
       });
     }
   }, [selectedLocation.latitude, selectedLocation.longitude]);
